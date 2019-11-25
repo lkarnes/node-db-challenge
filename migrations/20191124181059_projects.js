@@ -39,7 +39,7 @@ exports.up = function(knex) {
     tbl.integer('resource_id')
     .unsigned()
     .notNullable()
-    .references('resource.id')
+    .references('resources.id')
     .onDelete('CASCADE')
     .onUpdate('CASCADE');
     tbl.primary(['resource_id', 'project_id'])

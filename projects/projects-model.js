@@ -43,7 +43,8 @@ function addTask(task) {
 }
 
 function getTask() {
-    const tasks = db("tasks")
+    const tasks = db("tasks").join("projects", "project_id", "projects.id")
+    .select("tasks.id", "tasks.description", "tasks.notes","tasks.project_id", "projects.name as project_name", "projects.description as project_description")
     return tasks.map(task => {
         if(task.completed === 0){
             return {
